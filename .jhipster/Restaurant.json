@@ -1,0 +1,61 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "delivery",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "opened",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "businessHours",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "businessHours"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mysteriousOrder",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "mysteriousOrder"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    }
+  ],
+  "changelogDate": "20201224154607",
+  "entityTableName": "restaurant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

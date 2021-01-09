@@ -1,11 +1,8 @@
 package com.ach.danslemeal.web.rest;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
-
 import com.ach.danslemeal.config.Constants;
 import com.ach.danslemeal.domain.User;
 import com.ach.danslemeal.repository.UserRepository;
-import com.ach.danslemeal.repository.search.UserSearchRepository;
 import com.ach.danslemeal.security.AuthoritiesConstants;
 import com.ach.danslemeal.service.MailService;
 import com.ach.danslemeal.service.UserService;
@@ -20,8 +17,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.Collections;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,18 +73,10 @@ public class UserResource {
 
     private final MailService mailService;
 
-    private final UserSearchRepository userSearchRepository;
-
-    public UserResource(
-        UserService userService,
-        UserRepository userRepository,
-        MailService mailService,
-        UserSearchRepository userSearchRepository
-    ) {
+    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
-        this.userSearchRepository = userSearchRepository;
     }
 
     /**
@@ -214,16 +201,5 @@ public class UserResource {
             .noContent()
             .headers(HeaderUtil.createAlert(applicationName, "A user is deleted with identifier " + login, login))
             .build();
-    }
-
-    /**
-     * {@code SEARCH /_search/users/:query} : search for the User corresponding to the query.
-     *
-     * @param query the query to search.
-     * @return the result of the search.
-     */
-    @GetMapping("/_search/users/{query}")
-    public List<User> search(@PathVariable String query) {
-        return StreamSupport.stream(userSearchRepository.search(queryStringQuery(query)).spliterator(), false).collect(Collectors.toList());
     }
 }

@@ -1,0 +1,34 @@
+{
+  "name": "MysteriousOrder",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "PENDING,VALIDATED,CANCELLED,SENT,DELIVERED"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "mysteriousOrder",
+      "relationshipName": "restaurant",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201224154707",
+  "entityTableName": "mysterious_order",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

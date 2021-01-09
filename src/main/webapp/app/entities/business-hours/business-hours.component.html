@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Hours</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-hours" [routerLink]="['/business-hours/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Business Hours
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="businessHours?.length === 0">
+        <span>No businessHours found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="businessHours && businessHours.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Day</span></th>
+                    <th scope="col" ><span>Opening Time</span></th>
+                    <th scope="col" ><span>Closing Time</span></th>
+                    <th scope="col" ><span>Restaurant</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let businessHours of businessHours ;trackBy: trackId">
+                    <td><a [routerLink]="['/business-hours', businessHours.id, 'view']">{{ businessHours.id }}</a></td>
+                    <td>{{ businessHours.day }}</td>
+                    <td>{{ businessHours.openingTime }}</td>
+                    <td>{{ businessHours.closingTime }}</td>
+                    <td>
+                        <div *ngIf="businessHours.restaurant">
+                            <a [routerLink]="['/restaurant', businessHours.restaurant?.id, 'view']" >{{ businessHours.restaurant?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/business-hours', businessHours.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/business-hours', businessHours.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(businessHours)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -8,15 +8,9 @@ services:
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:postgresql://danslemeal-postgresql:5432/dansLeMeal
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
-      - SPRING_DATA_JEST_URI=http://danslemeal-elasticsearch:9200
-      - SPRING_ELASTICSEARCH_REST_URIS=http://danslemeal-elasticsearch:9200
     ports:
       - 8080:8080
   danslemeal-postgresql:
     extends:
       file: postgresql.yml
       service: danslemeal-postgresql
-  danslemeal-elasticsearch:
-    extends:
-      file: elasticsearch.yml
-      service: danslemeal-elasticsearch

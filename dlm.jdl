@@ -1,0 +1,39 @@
+entity BusinessHours {
+	day Integer
+    openingTime String
+    closingTime String
+}
+
+entity Restaurant {
+	name String
+    latitude Float
+    longitude Float
+    delivery Boolean
+    opened Boolean
+    price Float
+}
+
+entity MysteriousOrder {
+	status Status
+    date Instant
+}
+
+enum Status {
+	PENDING,
+    VALIDATED,
+    CANCELLED,
+    SENT,
+    DELIVERED
+}
+
+relationship ManyToOne {
+  Restaurant{user(login)} to User
+}
+
+relationship OneToMany {
+  Restaurant to BusinessHours
+}
+
+relationship OneToMany {
+  Restaurant to MysteriousOrder
+}

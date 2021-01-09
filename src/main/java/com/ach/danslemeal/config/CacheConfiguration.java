@@ -47,6 +47,11 @@ public class CacheConfiguration {
             createCache(cm, com.ach.danslemeal.domain.User.class.getName());
             createCache(cm, com.ach.danslemeal.domain.Authority.class.getName());
             createCache(cm, com.ach.danslemeal.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.ach.danslemeal.domain.BusinessHours.class.getName());
+            createCache(cm, com.ach.danslemeal.domain.Restaurant.class.getName());
+            createCache(cm, com.ach.danslemeal.domain.Restaurant.class.getName() + ".businessHours");
+            createCache(cm, com.ach.danslemeal.domain.Restaurant.class.getName() + ".mysteriousOrders");
+            createCache(cm, com.ach.danslemeal.domain.MysteriousOrder.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

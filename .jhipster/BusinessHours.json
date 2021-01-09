@@ -1,0 +1,37 @@
+{
+  "name": "BusinessHours",
+  "fields": [
+    {
+      "fieldName": "day",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "openingTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "closingTime",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "businessHours",
+      "relationshipName": "restaurant",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201224154507",
+  "entityTableName": "business_hours",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

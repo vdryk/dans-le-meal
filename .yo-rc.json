@@ -15,7 +15,7 @@
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
     "prodDatabaseType": "postgresql",
-    "searchEngine": "elasticsearch",
+    "searchEngine": false,
     "enableSwaggerCodegen": false,
     "messageBroker": false,
     "buildTool": "maven",
